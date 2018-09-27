@@ -69,7 +69,10 @@
     <Compile Include="Client\DocumentQueryExtensions.cs" />
     <Compile Include="Client\Enumeration\AsyncEnumerator.cs" />
     <Compile Include="Client\Enumeration\AsyncEnumeratorBase.cs" />
+    <Compile Include="Client\Enumeration\AsyncChangeFeedEnumeratorBase.cs" />
+    <Compile Include="Client\Enumeration\DocumentSurrogateChangeFeedQueryAsyncEnumerator.cs" />
     <Compile Include="Client\Enumeration\DocumentSurrogateQueryAsyncEnumerator.cs" />
+    <Compile Include="Client\Enumeration\IAsyncChangeFeedEnumerator.cs" />
     <Compile Include="Client\Serialization\DictionaryCreationConverter.cs" />
     <Compile Include="Client\Serialization\DocumentSurrogate.cs" />
     <Compile Include="Client\Serialization\DocumentSurrogateJsonConverter.cs" />

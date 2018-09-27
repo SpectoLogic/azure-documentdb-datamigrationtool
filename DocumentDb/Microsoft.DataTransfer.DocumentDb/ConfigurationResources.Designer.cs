@@ -19,7 +19,7 @@ namespace Microsoft.DataTransfer.DocumentDb {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ConfigurationResources {
@@ -241,6 +241,15 @@ namespace Microsoft.DataTransfer.DocumentDb {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Optional. Continuation Token File to continue previous import.
+        /// </summary>
+        public static string Source_ContinuationTokensFileName {
+            get {
+                return ResourceManager.GetString("Source_ContinuationTokensFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Optional. Preserve internal DocumentDB fields in the output.
         /// </summary>
         public static string Source_InternalFields {
@@ -264,6 +273,42 @@ namespace Microsoft.DataTransfer.DocumentDb {
         public static string Source_QueryFile {
             get {
                 return ResourceManager.GetString("Source_QueryFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Optional. Start Change Feed from creation time.
+        /// </summary>
+        public static string Source_StartFromBeginning {
+            get {
+                return ResourceManager.GetString("Source_StartFromBeginning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Optional. Start Change Feed from this time.
+        /// </summary>
+        public static string Source_StartTime {
+            get {
+                return ResourceManager.GetString("Source_StartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Optional. Update continuation tokens file after the import.
+        /// </summary>
+        public static string Source_UpdateContinuationTokensFile {
+            get {
+                return ResourceManager.GetString("Source_UpdateContinuationTokensFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Optional. Use ChangeFeed instead of query.
+        /// </summary>
+        public static string Source_UseChangeFeed {
+            get {
+                return ResourceManager.GetString("Source_UseChangeFeed", resourceCulture);
             }
         }
     }

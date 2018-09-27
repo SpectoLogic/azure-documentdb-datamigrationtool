@@ -234,4 +234,7 @@
   <data name="InvalidCollectionThroughput" xml:space="preserve">
     <value>Collection throughput should be greater than zero</value>
   </data>
+  <data name="ChangeFeedSupportsOnlyOneCollection" xml:space="preserve">
+    <value>ChangeFeed export currently only supports single collections!</value>
+  </data>
 </root>

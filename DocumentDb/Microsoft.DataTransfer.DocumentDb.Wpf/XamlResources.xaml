@@ -2,50 +2,52 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-  <ResourceDictionary.MergedDictionaries>
-    <ResourceDictionary Source="/Microsoft.DataTransfer.WpfHost.Basics;component/CommonStyles.xaml" />
-  </ResourceDictionary.MergedDictionaries>
-  
-  <!-- String resources -->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Microsoft.DataTransfer.WpfHost.Basics;component/CommonStyles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 
-  <system:String x:Key="ConnectionStringKey">Connection String</system:String>
-  <system:String x:Key="ConnectionStringDescriptionKey"><![CDATA[Specify a valid DocumentDB connection string in the following format: AccountEndpoint=<url>;AccountKey=<key>;Database=<db>]]></system:String>
-  <system:String x:Key="ConnectionStringSummaryKey">Connection String:</system:String>
-  <system:String x:Key="TestConnectionKey">Verify</system:String>
+    <!-- String resources -->
 
-  <system:String x:Key="CollectionPatternKey">Collection</system:String>
-  <system:String x:Key="CollectionPatternDescriptionKey">Regular expression to match one or more collection names</system:String>
-  <system:String x:Key="CollectionPatternSummaryKey">Collection:</system:String>
+    <system:String x:Key="ConnectionStringKey">Connection String</system:String>
+    <system:String x:Key="ConnectionStringDescriptionKey">
+        <![CDATA[Specify a valid DocumentDB connection string in the following format: AccountEndpoint=<url>;AccountKey=<key>;Database=<db>]]>
+    </system:String>
+    <system:String x:Key="ConnectionStringSummaryKey">Connection String:</system:String>
+    <system:String x:Key="TestConnectionKey">Verify</system:String>
 
-  <system:String x:Key="CollectionKey">Collection</system:String>
-  <system:String x:Key="CollectionSummaryKey">Collection:</system:String>
-  
-  <system:String x:Key="CollectionsKey">Collections</system:String>
-  <system:String x:Key="CollectionsDescriptionKey">
-    <![CDATA[One or more collection names. Use "[a-b]" placeholder to automatically generate collection index, e.g. "Data[0-2]" will result in the following collection names: Data0, Data1, Data2]]>
-  </system:String>
-  <system:String x:Key="CollectionsSummaryKey">Collections:</system:String>
+    <system:String x:Key="CollectionPatternKey">Collection</system:String>
+    <system:String x:Key="CollectionPatternDescriptionKey">Regular expression to match one or more collection names</system:String>
+    <system:String x:Key="CollectionPatternSummaryKey">Collection:</system:String>
 
-  <system:String x:Key="BulkPartitionKeyKey">Partition Key</system:String>
-  <system:String x:Key="BulkPartitionKeyDescriptionKey">Name of the property to use as hash partitioning key. If not provided - records will be randomly distributed across all target collections</system:String>
-  <system:String x:Key="ParallelPartitionKeyKey">Partition Key</system:String>
-  <system:String x:Key="ParallelPartitionKeyDescriptionKey">
-      <![CDATA[Path to the property to use as hash partitioning key, for example "/deviceId"]]>
-  </system:String>
-  <system:String x:Key="PartitionKeySummaryKey">Partition Key:</system:String>
-  
-  <system:String x:Key="CollectionThroughputKey">Collection Throughput</system:String>
-  <system:String x:Key="CollectionThroughputDescriptionKey">Specify the desired throughput for the collection in RUs (request units). Note that this only applies to collection creation, existing collections will not have their throughput modified</system:String>
-  <system:String x:Key="CollectionThroughputSummaryKey">Collection Throughput:</system:String>
+    <system:String x:Key="CollectionKey">Collection</system:String>
+    <system:String x:Key="CollectionSummaryKey">Collection:</system:String>
 
-  <system:String x:Key="IndexingPolicySummaryKey">Collection Indexing Policy:</system:String>
-  <system:String x:Key="EnterIndexingPolicySelectionKey">Enter Indexing Policy</system:String>
-  <system:String x:Key="IndexingPolicyFileSelectionKey">Select Policy File</system:String>
-  <system:String x:Key="IndexingPolicyFileFilterKey">JSON Documents|*.json|All Files|*.*</system:String>
-  <system:String x:Key="IndexingPolicyFileDefaultExtensionKey">*.json</system:String>
+    <system:String x:Key="CollectionsKey">Collections</system:String>
+    <system:String x:Key="CollectionsDescriptionKey">
+        <![CDATA[One or more collection names. Use "[a-b]" placeholder to automatically generate collection index, e.g. "Data[0-2]" will result in the following collection names: Data0, Data1, Data2]]>
+    </system:String>
+    <system:String x:Key="CollectionsSummaryKey">Collections:</system:String>
 
-  <system:String x:Key="IndexingPolicyDefaultTemplateMenuHeader">Default</system:String>
-  <system:String x:Key="IndexingPolicyDefaultTemplate" xml:space="preserve">
+    <system:String x:Key="BulkPartitionKeyKey">Partition Key</system:String>
+    <system:String x:Key="BulkPartitionKeyDescriptionKey">Name of the property to use as hash partitioning key. If not provided - records will be randomly distributed across all target collections</system:String>
+    <system:String x:Key="ParallelPartitionKeyKey">Partition Key</system:String>
+    <system:String x:Key="ParallelPartitionKeyDescriptionKey">
+        <![CDATA[Path to the property to use as hash partitioning key, for example "/deviceId"]]>
+    </system:String>
+    <system:String x:Key="PartitionKeySummaryKey">Partition Key:</system:String>
+
+    <system:String x:Key="CollectionThroughputKey">Collection Throughput</system:String>
+    <system:String x:Key="CollectionThroughputDescriptionKey">Specify the desired throughput for the collection in RUs (request units). Note that this only applies to collection creation, existing collections will not have their throughput modified</system:String>
+    <system:String x:Key="CollectionThroughputSummaryKey">Collection Throughput:</system:String>
+
+    <system:String x:Key="IndexingPolicySummaryKey">Collection Indexing Policy:</system:String>
+    <system:String x:Key="EnterIndexingPolicySelectionKey">Enter Indexing Policy</system:String>
+    <system:String x:Key="IndexingPolicyFileSelectionKey">Select Policy File</system:String>
+    <system:String x:Key="IndexingPolicyFileFilterKey">JSON Documents|*.json|All Files|*.*</system:String>
+    <system:String x:Key="IndexingPolicyFileDefaultExtensionKey">*.json</system:String>
+
+    <system:String x:Key="IndexingPolicyDefaultTemplateMenuHeader">Default</system:String>
+    <system:String x:Key="IndexingPolicyDefaultTemplate" xml:space="preserve">
 <![CDATA[{
   "indexingMode": "consistent",
   "automatic": true,
@@ -89,8 +91,8 @@
 }]]>
   </system:String>
 
-  <system:String x:Key="IndexingPolicyAllRangeTemplateMenuHeader">Range</system:String>
-  <system:String x:Key="IndexingPolicyAllRangeTemplate" xml:space="preserve">
+    <system:String x:Key="IndexingPolicyAllRangeTemplateMenuHeader">Range</system:String>
+    <system:String x:Key="IndexingPolicyAllRangeTemplate" xml:space="preserve">
 <![CDATA[{
   "indexingMode": "consistent",
   "automatic": true,
@@ -134,60 +136,72 @@
 }]]>
   </system:String>
 
-  <system:String x:Key="ConnectionModeKey">Connection Mode</system:String>
-  <system:String x:Key="ConnectionModeDescriptionKey">Choose the DocumentDB connection mode. Direct connection works faster, but Gateway is more firewall friendly</system:String>
-  <system:String x:Key="ConnectionModeSummaryKey">Connection Mode:</system:String>
+    <system:String x:Key="ConnectionModeKey">Connection Mode</system:String>
+    <system:String x:Key="ConnectionModeDescriptionKey">Choose the DocumentDB connection mode. Direct connection works faster, but Gateway is more firewall friendly</system:String>
+    <system:String x:Key="ConnectionModeSummaryKey">Connection Mode:</system:String>
 
-  <system:String x:Key="IdFieldKey">Id Field</system:String>
-  <system:String x:Key="IdFieldSummaryKey">Id Field:</system:String>
-  
-  <system:String x:Key="AdvancedConfigurationTitleKey">Advanced Options</system:String>
+    <system:String x:Key="IdFieldKey">Id Field</system:String>
+    <system:String x:Key="IdFieldSummaryKey">Id Field:</system:String>
 
-  <system:String x:Key="DisableIdGenerationKey">Disable Automatic Id Generation</system:String>
-  <system:String x:Key="DisableIdGenerationDescriptionKey">If every document to be imported contains an unique id field, then selecting this option can increase performance. Documents without an unique id field will not be imported</system:String>
-  <system:String x:Key="DisableIdGenerationSummaryKey">Disable Automatic Id Generation:</system:String>
+    <system:String x:Key="AdvancedConfigurationTitleKey">Advanced Options</system:String>
 
-  <system:String x:Key="UpdateExistingKey">Update Existing Documents</system:String>
-  <system:String x:Key="UpdateExistingDescriptionKey">Update existing documents with the same id</system:String>
-  <system:String x:Key="UpdateExistingSummaryKey">Update Existing Documents:</system:String>
-  
-  <system:String x:Key="DatesHandlingKey">Persist Date and Time as</system:String>
-  <system:String x:Key="DatesHandlingSummaryKey">Persist Date and Time as:</system:String>
-  
-  <system:String x:Key="RetriesKey">Number of Retries on Failure</system:String>
-  <system:String x:Key="RetriesSummaryKey">Number of Retries on Failure:</system:String>
-  
-  <system:String x:Key="RetryIntervalKey">Retry Interval</system:String>
-  <system:String x:Key="RetryIntervalSummaryKey">Retry Interval:</system:String>
-  
-  <system:String x:Key="ParallelRequestsKey">Number of Parallel Requests</system:String>
-  <system:String x:Key="ParallelRequestsSummaryKey">Number of Parallel Requests:</system:String>
+    <system:String x:Key="DisableIdGenerationKey">Disable Automatic Id Generation</system:String>
+    <system:String x:Key="DisableIdGenerationDescriptionKey">If every document to be imported contains an unique id field, then selecting this option can increase performance. Documents without an unique id field will not be imported</system:String>
+    <system:String x:Key="DisableIdGenerationSummaryKey">Disable Automatic Id Generation:</system:String>
 
-  <system:String x:Key="StoredProcFileKey">Bulk Insert Stored Procedure</system:String>
-  <system:String x:Key="StoredProcFileDescriptionKey">Select an alternate bulk insert stored procedure (leave blank to use the default script)</system:String>
-  <system:String x:Key="StoredProcFileSummaryKey">Bulk Insert Stored Procedure:</system:String>
-  <system:String x:Key="StoredProcFileFilter">JavaScript Files|*.js|All Files|*.*</system:String>
-  <system:String x:Key="StoredProcFileDefaultExtension">*.js</system:String>
-  
-  <system:String x:Key="BatchSizeKey">Batch Size</system:String>
-  <system:String x:Key="BatchSizeSummaryKey">Batch Size:</system:String>
-  
-  <system:String x:Key="MaxScriptSizeKey">Max Script Size (bytes)</system:String>
-  <system:String x:Key="MaxScriptSizeSummaryKey">Max Script Size (bytes):</system:String>
+    <system:String x:Key="UpdateExistingKey">Update Existing Documents</system:String>
+    <system:String x:Key="UpdateExistingDescriptionKey">Update existing documents with the same id</system:String>
+    <system:String x:Key="UpdateExistingSummaryKey">Update Existing Documents:</system:String>
 
-  <system:String x:Key="QuerySummaryKey">Query:</system:String>
-  <system:String x:Key="EnterQuerySelectionKey">Enter Query</system:String>
-  <system:String x:Key="QueryFileSelectionKey">Select Query File</system:String>
-  <system:String x:Key="QueryFileFilterKey">SQL Query|*.sql|All Files|*.*</system:String>
-  <system:String x:Key="QueryFileDefaultExtensionKey">*.sql</system:String>
+    <system:String x:Key="DatesHandlingKey">Persist Date and Time as</system:String>
+    <system:String x:Key="DatesHandlingSummaryKey">Persist Date and Time as:</system:String>
 
-  <system:String x:Key="IncludeInternalFieldsKey">Include Internal Fields</system:String>
-  <system:String x:Key="IncludeInternalFieldsSummaryKey">Include Internal Fields:</system:String>
+    <system:String x:Key="RetriesKey">Number of Retries on Failure</system:String>
+    <system:String x:Key="RetriesSummaryKey">Number of Retries on Failure:</system:String>
 
-  <!-- Styles -->
+    <system:String x:Key="RetryIntervalKey">Retry Interval</system:String>
+    <system:String x:Key="RetryIntervalSummaryKey">Retry Interval:</system:String>
 
-  <Style x:Key="ScrollWrapper" TargetType="ScrollViewer">
-    <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
-  </Style>
+    <system:String x:Key="ParallelRequestsKey">Number of Parallel Requests</system:String>
+    <system:String x:Key="ParallelRequestsSummaryKey">Number of Parallel Requests:</system:String>
+
+    <system:String x:Key="StoredProcFileKey">Bulk Insert Stored Procedure</system:String>
+    <system:String x:Key="StoredProcFileDescriptionKey">Select an alternate bulk insert stored procedure (leave blank to use the default script)</system:String>
+    <system:String x:Key="StoredProcFileSummaryKey">Bulk Insert Stored Procedure:</system:String>
+    <system:String x:Key="StoredProcFileFilter">JavaScript Files|*.js|All Files|*.*</system:String>
+    <system:String x:Key="StoredProcFileDefaultExtension">*.js</system:String>
+
+    <system:String x:Key="BatchSizeKey">Batch Size</system:String>
+    <system:String x:Key="BatchSizeSummaryKey">Batch Size:</system:String>
+
+    <system:String x:Key="MaxScriptSizeKey">Max Script Size (bytes)</system:String>
+    <system:String x:Key="MaxScriptSizeSummaryKey">Max Script Size (bytes):</system:String>
+
+    <system:String x:Key="QuerySummaryKey">Query:</system:String>
+    <system:String x:Key="ChangeFeedSummaryKey">Changefeed:</system:String>
+    <system:String x:Key="SummaryChangeFeedAtBeginningKey">Start change feed at beginning.</system:String>
+    <system:String x:Key="SummaryChangeFeedAtKey">Start change feed at:</system:String>
+    <system:String x:Key="SummaryContinuationTokenFileKey">Continuation Token File:</system:String>
+    <system:String x:Key="SummaryUpdateContinuationTokensFileKey">Update Continuation Tokens File after processing.</system:String>
+    
+    <system:String x:Key="EnterQuerySelectionKey">Enter Query</system:String>
+    <system:String x:Key="QueryFileSelectionKey">Select Query File</system:String>
+    <system:String x:Key="QueryFileFilterKey">SQL Query|*.sql|All Files|*.*</system:String>
+    <system:String x:Key="QueryFileDefaultExtensionKey">*.sql</system:String>
+
+    <system:String x:Key="IncludeInternalFieldsKey">Include Internal Fields</system:String>
+    <system:String x:Key="UseChangeFeedKey">Use change feed of the collection</system:String>
+    <system:String x:Key="UpdateContinuationTokensFileKey">Update continuation token file after processing</system:String>
+    <system:String x:Key="StartFromBeginningKey">Start change feed from beginning</system:String>
+    <system:String x:Key="StartTimeKey">Change feed starting at:</system:String>
+    <system:String x:Key="ContinuationTokensFileNameKey">File to read/store continuation tokens:</system:String>
+    
+    <system:String x:Key="IncludeInternalFieldsSummaryKey">Include Internal Fields:</system:String>
+
+    <!-- Styles -->
+
+    <Style x:Key="ScrollWrapper" TargetType="ScrollViewer">
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    </Style>
 
 </ResourceDictionary>

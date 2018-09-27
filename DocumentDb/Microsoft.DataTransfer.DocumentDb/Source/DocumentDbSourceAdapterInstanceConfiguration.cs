@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace Microsoft.DataTransfer.DocumentDb.Source
 {
@@ -6,5 +6,10 @@ namespace Microsoft.DataTransfer.DocumentDb.Source
     {
         public string Collection { get; set; }
         public string Query { get; set; }
+        public bool UseChangeFeed { get; set; }
+        public bool StartFromBeginning { get; set; }
+        public DateTime? StartTime { get; set; }
+        public string ContinuationTokensFileName { get; set; }
+        public bool UpdateContinuationTokensFile { get; set; }
     }
 }

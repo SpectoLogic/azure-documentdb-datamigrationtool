@@ -77,6 +77,9 @@ namespace Microsoft.DataTransfer.ConsoleHost.DynamicConfiguration
             if (type.IsAssignableFrom(typeof(TimeSpan)))
                 return TimeSpan.Parse(value, CultureInfo.InvariantCulture);
 
+            if (type.IsAssignableFrom(typeof(DateTime)))
+                return DateTime.Parse(value, CultureInfo.InvariantCulture);
+
             if (type.IsGenericType && type.GetGenericTypeDefinition().Equals(typeof(IEnumerable<>)))
                 return ConvertCollectionValueMethod.MakeGenericMethod(type.GetGenericArguments()[0]).Invoke(null, new[] { value });
 

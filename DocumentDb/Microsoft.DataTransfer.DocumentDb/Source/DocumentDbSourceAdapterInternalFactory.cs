@@ -12,7 +12,7 @@ namespace Microsoft.DataTransfer.DocumentDb.Source
 {
     sealed class DocumentDbSourceAdapterInternalFactory : DocumentDbAdapterFactoryBase, IDataSourceAdapterFactory<IDocumentDbSourceAdapterConfiguration>
     {
-        private static readonly string[] DocumentDbInternalFields = new[] { "_rid", "_ts", "_self", "_etag", "_attachments" };
+        private static readonly string[] DocumentDbInternalFields = new[] { "_rid", "_ts", "_self", "_etag", "_attachments", "_lsn" };
 
         public string Description
         {
@@ -53,7 +53,12 @@ namespace Microsoft.DataTransfer.DocumentDb.Source
             return new DocumentDbSourceAdapterInstanceConfiguration
             {
                 Collection = configuration.Collection,
-                Query = GetQuery(configuration)
+                Query = GetQuery(configuration),
+                UseChangeFeed = configuration.UseChangeFeed,
+                ContinuationTokensFileName = configuration.ContinuationTokensFileName,
+                StartFromBeginning = configuration.StartFromBeginning,
+                StartTime = configuration.StartTime,
+                UpdateContinuationTokensFile = configuration.UpdateContinuationTokensFile
             };
         }
 

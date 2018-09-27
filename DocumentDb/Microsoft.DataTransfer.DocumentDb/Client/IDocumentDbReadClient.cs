@@ -10,5 +10,12 @@ namespace Microsoft.DataTransfer.DocumentDb.Client
     {
         Task<IAsyncEnumerator<IReadOnlyDictionary<string, object>>> QueryDocumentsAsync(
             string collectionNamePattern, string query, CancellationToken cancellation);
+
+        Task<IAsyncEnumerator<IReadOnlyDictionary<string, object>>> QueryDocumentChangeFeedAsync(
+            string collectionNamePattern,
+            bool startFromBeginning,
+            DateTime? startTime,
+            Dictionary<string, string> partitionKeyRangeContinuationTokens,
+            CancellationToken cancellation);
     }
 }

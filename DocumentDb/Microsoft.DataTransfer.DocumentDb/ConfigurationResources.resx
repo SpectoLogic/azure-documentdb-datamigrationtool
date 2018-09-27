@@ -177,6 +177,9 @@
   <data name="Source_Collection" xml:space="preserve">
     <value>Regex pattern to match one or more documents collection names</value>
   </data>
+  <data name="Source_ContinuationTokensFileName" xml:space="preserve">
+    <value>Optional. Continuation Token File to continue previous import</value>
+  </data>
   <data name="Source_InternalFields" xml:space="preserve">
     <value>Optional. Preserve internal DocumentDB fields in the output</value>
   </data>
@@ -185,5 +188,17 @@
   </data>
   <data name="Source_QueryFile" xml:space="preserve">
     <value>Optional. Path to the file containing documents query</value>
+  </data>
+  <data name="Source_StartFromBeginning" xml:space="preserve">
+    <value>Optional. Start Change Feed from creation time</value>
+  </data>
+  <data name="Source_StartTime" xml:space="preserve">
+    <value>Optional. Start Change Feed from this time</value>
+  </data>
+  <data name="Source_UpdateContinuationTokensFile" xml:space="preserve">
+    <value>Optional. Update continuation tokens file after the import</value>
+  </data>
+  <data name="Source_UseChangeFeed" xml:space="preserve">
+    <value>Optional. Use ChangeFeed instead of query</value>
   </data>
 </root>

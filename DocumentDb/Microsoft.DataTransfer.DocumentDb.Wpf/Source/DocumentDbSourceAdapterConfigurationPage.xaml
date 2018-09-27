@@ -6,51 +6,68 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:bc="clr-namespace:Microsoft.DataTransfer.WpfHost.Basics.Controls;assembly=Microsoft.DataTransfer.WpfHost.Basics"
              xmlns:shared="clr-namespace:Microsoft.DataTransfer.DocumentDb.Wpf.Shared" 
+             xmlns:converters="clr-namespace:Microsoft.DataTransfer.WpfHost.Basics.ValueConverters;assembly=Microsoft.DataTransfer.WpfHost.Basics"
              mc:Ignorable="d" x:ClassModifier="internal"
              d:DesignHeight="300" d:DesignWidth="300">
-  
-  <UserControl.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="..\XamlResources.xaml"/>
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </UserControl.Resources>
 
-  <AdornerDecorator>
-    <ScrollViewer Style="{StaticResource ScrollWrapper}">
-      <Grid Style="{StaticResource FixScrollViewerAdorner}">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="150" />
-          <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        
-        <shared:DocumentDbAdapterConnectionConfigurationControl Grid.Row="0" Configuration="{Binding}" />
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\XamlResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:InvertBooleanValueConverter x:Key="NotOperator" />
+        </ResourceDictionary>
+    </UserControl.Resources>
 
-        <StackPanel Grid.Row="1" Style="{StaticResource OptionElement}">
-          <bc:ToolTipDecorator ToolTip="{DynamicResource CollectionPatternDescriptionKey}">
-            <Label Content="{DynamicResource CollectionPatternKey}" />
-          </bc:ToolTipDecorator>
-          <TextBox Text="{Binding Collection, UpdateSourceTrigger=PropertyChanged, TargetNullValue={x:Static system:String.Empty}}" />
-        </StackPanel>
+    <AdornerDecorator>
+        <ScrollViewer Style="{StaticResource ScrollWrapper}">
+            <Grid Style="{StaticResource FixScrollViewerAdorner}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-        <bc:StringOrFileConfigurationControl Grid.Row="2" Style="{StaticResource OptionElement}"
+                <shared:DocumentDbAdapterConnectionConfigurationControl Grid.Row="0" Configuration="{Binding}" />
+
+                <StackPanel Grid.Row="1" Style="{StaticResource OptionElement}">
+                    <bc:ToolTipDecorator ToolTip="{DynamicResource CollectionPatternDescriptionKey}">
+                        <Label Content="{DynamicResource CollectionPatternKey}" />
+                    </bc:ToolTipDecorator>
+                    <TextBox Text="{Binding Collection, UpdateSourceTrigger=PropertyChanged, TargetNullValue={x:Static system:String.Empty}}" />
+                </StackPanel>
+
+                <bc:StringOrFileConfigurationControl IsEnabled="{Binding UseChangeFeed, Converter={StaticResource NotOperator}}" Grid.Row="2" Style="{StaticResource OptionElement}"
           UseFile="{Binding UseQueryFile}"
           StringValueLabel="{DynamicResource EnterQuerySelectionKey}" StringValue="{Binding Query}"
           FileNameLabel="{DynamicResource QueryFileSelectionKey}" FileName="{Binding QueryFile}"
           FileFilter="{DynamicResource QueryFileFilterKey}" FileDefaultExtension="{DynamicResource QueryFileDefaultExtensionKey}" />
 
-        <Expander Grid.Row="3" Style="{StaticResource OptionElement}" Header="{DynamicResource AdvancedConfigurationTitleKey}">
-          <StackPanel>
-            <CheckBox Style="{StaticResource SingleLineOptionElement}" Content="{DynamicResource IncludeInternalFieldsKey}" IsChecked="{Binding InternalFields}" />
-
-            <shared:DocumentDbAdapterAdvancedConfigurationControl DataContext="{Binding}" />
-          </StackPanel>
-        </Expander>
-      </Grid>
-    </ScrollViewer>
-  </AdornerDecorator>
+                <Expander Grid.Row="3" Style="{StaticResource OptionElement}" Header="{DynamicResource AdvancedConfigurationTitleKey}">
+                    <StackPanel>
+                        <CheckBox Style="{StaticResource SingleLineOptionElement}" Content="{DynamicResource IncludeInternalFieldsKey}" IsChecked="{Binding InternalFields}" />
+                        <CheckBox Style="{StaticResource SingleLineOptionElement}" Content="{DynamicResource UseChangeFeedKey}" IsChecked="{Binding UseChangeFeed}" />
+                        <Border Margin="5" Padding="5" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="3" VerticalAlignment="Top">
+                            <StackPanel IsEnabled="{Binding UseChangeFeed}">
+                                <CheckBox Style="{StaticResource SingleLineOptionElement}" Content="{DynamicResource StartFromBeginningKey}" IsChecked="{Binding StartFromBeginning}" />
+                                <StackPanel IsEnabled="{Binding StartFromBeginning , Converter={StaticResource NotOperator}}">
+                                    <Label Content="{DynamicResource StartTimeKey}" />
+                                    <DatePicker SelectedDate="{Binding StartTime}"/>
+                                </StackPanel>
+                                <Label Content="{DynamicResource ContinuationTokensFileNameKey}" />
+                                <bc:SaveLocalFileControl 
+                                    FileName="{Binding ContinuationTokensFileName, UpdateSourceTrigger=PropertyChanged}"
+                                    Filter="JSON Documents|*.json"
+                                    DefaultExtension=".json" />
+                                <CheckBox Style="{StaticResource SingleLineOptionElement}" Content="{DynamicResource UpdateContinuationTokensFileKey}" IsChecked="{Binding UpdateContinuationTokensFile}" />
+                            </StackPanel>
+                        </Border>
+                        <shared:DocumentDbAdapterAdvancedConfigurationControl DataContext="{Binding}" />
+                    </StackPanel>
+                </Expander>
+            </Grid>
+        </ScrollViewer>
+    </AdornerDecorator>
 
 </UserControl>

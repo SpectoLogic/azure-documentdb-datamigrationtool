@@ -1,4 +1,5 @@
 ﻿using Microsoft.DataTransfer.DocumentDb.Shared;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Microsoft.DataTransfer.DocumentDb.Source
@@ -31,5 +32,37 @@ namespace Microsoft.DataTransfer.DocumentDb.Source
         /// </summary>
         [Display(ResourceType = typeof(ConfigurationResources), Description = "Source_QueryFile")]
         string QueryFile { get; }
+
+        /// <summary>
+        /// Should we read the change feed instead of querying the collection?
+        /// </summary>
+        [Display(ResourceType = typeof(ConfigurationResources), Description = "Source_UseChangeFeed")]
+        bool UseChangeFeed { get; }
+
+        /// <summary>
+        /// Reference to a file that has continuation tokens from a previous import
+        /// stored. These will be used to continue from there.
+        /// </summary>
+        [Display(ResourceType = typeof(ConfigurationResources), Description = "Source_ContinuationTokensFileName")]
+        string ContinuationTokensFileName { get; }
+
+        /// <summary>
+        /// Should we start reading the change feed from the beginning?
+        /// </summary>
+        [Display(ResourceType = typeof(ConfigurationResources), Description = "Source_StartFromBeginning")]
+        bool StartFromBeginning { get; }
+
+        /// <summary>
+        /// Define a start time for the change feed processing
+        /// </summary>
+        [Display(ResourceType = typeof(ConfigurationResources), Description = "Source_StartTime")]
+        DateTime? StartTime { get; }
+
+        /// <summary>
+        /// Defines if we should update the ContinuationTokens file with the new
+        /// continuation tokens
+        /// </summary>
+        [Display(ResourceType = typeof(ConfigurationResources), Description = "Source_UpdateContinuationTokensFile")]
+        bool UpdateContinuationTokensFile { get; }
     }
 }

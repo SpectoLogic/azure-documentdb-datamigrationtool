@@ -149,12 +149,69 @@ namespace Microsoft.DataTransfer.DocumentDb.Client
                 MaxItemCount = -1
             };
 
-            var documentQuery = 
+            var documentQuery =
                 String.IsNullOrEmpty(query)
                     ? client.CreateDocumentQuery<DocumentSurrogate>(database.SelfLink, feedOptions)
                     : client.CreateDocumentQuery<DocumentSurrogate>(database.SelfLink, query, feedOptions);
 
             return new DocumentSurrogateQueryAsyncEnumerator(documentQuery.AsDocumentQuery());
+        }
+
+        /// <summary>
+        /// Alternative to QueryDocumentsAsync, using the change feed instead
+        /// </summary>
+        /// <param name="collectionNamePattern"></param>
+        /// <param name="startFromBeginning"></param>
+        /// <param name="startTime"></param>
+        /// <param name="partitionKeyRangeContinuationTokens"></param>
+        /// <param name="cancellation"></param>
+        /// <returns></returns>
+        public async Task<IAsyncEnumerator<IReadOnlyDictionary<string, object>>> QueryDocumentChangeFeedAsync(
+            string collectionNamePattern, 
+            bool startFromBeginning,
+            DateTime? startTime,
+            Dictionary<string,string> partitionKeyRangeContinuationTokens,
+            CancellationToken cancellation)
+        {
+            Guard.NotEmpty("collectionNamePattern", collectionNamePattern);
+
+            var database = await TryGetDatabase(databaseName, cancellation);
+            if (database == null)
+                return EmptyAsyncEnumerator<IReadOnlyDictionary<string, object>>.Instance;
+
+            var matchingCollections = await GetMatchingCollections(database, collectionNamePattern, cancellation);
+            if (matchingCollections == null || !matchingCollections.Any())
+                return EmptyAsyncEnumerator<IReadOnlyDictionary<string, object>>.Instance;
+
+            if (matchingCollections.Count > 1)
+                throw new Exception(Resources.ChangeFeedSupportsOnlyOneCollection);
+
+            var changeFeedOptions = new ChangeFeedOptions
+            {
+                StartTime = startTime,
+                StartFromBeginning = startFromBeginning,
+                MaxItemCount = -1
+            };
+
+            List<string> partitionKeyRanges = await GetPartitionKeyRanges(matchingCollections[0]);
+
+            return new DocumentSurrogateChangeFeedQueryAsyncEnumerator(client, collectionName: matchingCollections[0], partitionKeyRanges: partitionKeyRanges, partitionKeyRangeContinuationTokens: partitionKeyRangeContinuationTokens, options: changeFeedOptions);
+        }
+
+        public async Task<List<string>> GetPartitionKeyRanges(string collectionUri)
+        {
+            FeedResponse<PartitionKeyRange> response = null;
+            List<string> ids = new List<string>();
+            do
+            {
+                response = await client.ReadPartitionKeyRangeFeedAsync(collectionUri, new FeedOptions { MaxItemCount = 1000 });
+                foreach (var item in response)
+                {
+                    ids.Add(item.Id);
+                }
+            }
+            while (!string.IsNullOrEmpty(response.ResponseContinuation));
+            return ids;
         }
 
         private async Task<IReadOnlyList<string>> GetMatchingCollections(Database database, string collectionNamePattern, CancellationToken cancellation)

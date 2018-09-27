@@ -87,6 +87,9 @@ namespace Microsoft.DataTransfer.ConsoleHost.DynamicConfiguration
             if (value is TimeSpan)
                 return new CodeObjectCreateExpression(typeof(TimeSpan), new CodePrimitiveExpression(((TimeSpan)value).Ticks));
 
+            if (value is DateTime)
+                return new CodeObjectCreateExpression(typeof(DateTime), new CodePrimitiveExpression(((DateTime)value).Ticks));
+
             if (!(value is string))
             {
                 var enumerableType = valueType
